@@ -1,0 +1,5 @@
+# VSCode
+*.vscode
+
+# JSConfig
+*jsconfig.json
