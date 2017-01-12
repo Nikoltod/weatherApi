@@ -1,3 +1,15 @@
+////
+//*
+//*
+//* 
+//* 
+//* Will be changed due to the change in the logger.
+//*
+//*
+//*
+////
+
+
 const logger = require("../config/components/logger/init.js");
 
 function errorLoad() {

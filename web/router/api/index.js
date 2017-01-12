@@ -2,6 +2,7 @@ const express = require('express');
 const app = express();
 const fs = require('fs');
 const bulkData = '../../../models/data/city.list.json';
+const logger = require("../config/components/logger/init.js");
 
 
 //API call - example
@@ -19,33 +20,24 @@ function apiCall(method, options) {
     let url = "api.openweathermap.org/data/2.5/forecast/daily";
     const xhr = new XMLHttpRequest();
     options.method = options.method.toUpperCase();
-    
     if(options.method === 'POST') {
         xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
     }
-    
     xhr.onreadystatechange = handleServerResponse;
-
     xhr.open(options.method, url, true);
-
     let requestData = handleArguments(options.method, options.params); 
-
     xhr.send(requestData); // could be null - if any problems occur - handle with if(options.method === "POST")
-    
 }
 
 function handleArguments(method, args) {
     let result = '';
-
     for(arg in args) {
         result += arg + '=' + args[arg] + '&';        
     }
     result = result.slice(0, -1); 
-    
     if(method === 'GET') {
         result = '?' + result;
     } 
-
     return result;    
 }
 
@@ -61,11 +53,8 @@ function handleServerResponse() {
         return result;
     } 
     } catch(e) {
-        //there was an problem with the request
-                //TODO : write a logger for the errors 
-                    //Log the error in a file
+        logger.logError(e);
     }
-
 }
 
 
