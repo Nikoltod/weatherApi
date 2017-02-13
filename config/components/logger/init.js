@@ -11,7 +11,6 @@ const writeLog = function(file, data) {
     var stream = fs.createWriteStream(file, {'flags': 'a', 'encoding': 'utf8'});
     stream.write(data);
     stream.end();
-    //free up the variable
     delete stream;
 }
 
