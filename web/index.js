@@ -2,7 +2,7 @@ const path = require('path');
 const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
-const logger = require('../config/components/logger/init.js');
+const logger = require('../config/logger/init.js');
 
 //using body parser for every request
 app.use(bodyParser.urlencoded({
