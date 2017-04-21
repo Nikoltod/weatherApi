@@ -5,6 +5,7 @@ const rootPath = process.env.PWD;
 const data = `${rootPath}/models/data/city.list.json`;
 const logger = require(`${rootPath}/config/logger/init.js`);
 const api = require('./api/init.js');
+
 //API call - example
 // api.openweathermap.org/data/2.5/forecast/daily?q={city name},{country code}&cnt={cnt}
 
@@ -37,11 +38,5 @@ app.get('/:city', (req, res) => {
 app.post('/', (req, res) => {
     return res.send('everything is ok')
 });
-
-
-// app.post('/', function (req, res) {
-//   return res.send('POST request to homepage');
-// });
-
 
 module.exports = app;
